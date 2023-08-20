@@ -30,10 +30,5 @@ class TenantResource extends JsonResource
         ];
     }
     
-    public function with($request)
-    {
-        return [
-            'message' => $this->message ?? 'Data retrieved successfully', // Pesan dinamis
-        ];
-    }
+
 }

@@ -13,7 +13,7 @@ class TenantController extends Controller
     public function index()
     {
         $tenants = Tenant::latest()->paginate(10);
-        return TenantResource::collection($tenants)->message('Tenant data retrieved successfully');
+        return TenantResource::collection($tenants);
     }
     public function destroy($id)
     {
@@ -34,7 +34,8 @@ class TenantController extends Controller
 
         $tenant = Tenant::create($validatedData);
 
-        return TenantResource::collection($tenant);
+        return (new TenantResource($tenant))
+            ->additional(['message' => 'Tenant created successfully']);
     }
     public function update(UpdateTenantRequest $request, $id)
     {
@@ -43,7 +44,8 @@ class TenantController extends Controller
 
         $tenant->update($validatedData);
 
-        return new TenantResource($tenant);
+        return  (new TenantResource($tenant))
+        ->additional(['message' => 'Tenant updated successfully']);
     }
 
 }
