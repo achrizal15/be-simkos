@@ -18,8 +18,11 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'su',
-            'username'=>$this->generateUsername('su'),
+            'username' => $this->generateUsername('su'),
             'email' => 'su@simkos.com',
+        ]);
+        $this->call([
+            TenantSeeder::class
         ]);
     }
 }
