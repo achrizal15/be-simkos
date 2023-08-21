@@ -14,6 +14,6 @@ class Tenant extends Model
         'original_address', 'email', 'identification_document',
         'workplace', 'school', 'workplace_address', 'school_address',
         'identification_document_filename', 'emergency_contact_name',
-        'emergency_contact_phone',
+        'emergency_contact_phone'
     ];
 }
