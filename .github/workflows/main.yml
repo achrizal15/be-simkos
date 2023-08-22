@@ -21,4 +21,4 @@ jobs:
     - name: composer dep
       run: composer install
     - name: PHP
-      run: php artisan optimize  && php artisan migrate --force           
+      run: php artisan optimize:clear      
