@@ -18,5 +18,7 @@ jobs:
         username: be-simkos@simkos.rgtesting.site
         password: pusing081
     
-    - name: Php Artisan
+    - name: composer dep
       run: composer install
+    - name: PHP
+      run: php -v
