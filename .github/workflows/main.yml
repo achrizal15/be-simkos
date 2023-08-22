@@ -19,4 +19,4 @@ jobs:
         password: pusing081
     
     - name: Php Artisan
-      run: php artisan migrate:fresh --seed
+      run: composer install
