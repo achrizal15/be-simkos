@@ -10,13 +10,6 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ftp.rgtesting.site
-        username: be-simkos@simkosapi.rgtesting.site
-        password: pusing081
 
     - name: 📂 SERVER JASERBA
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -24,3 +17,12 @@ jobs:
         server: ftp.jaserba.store
         username: simkos@be-simkos.jaserba.store
         password: pusing081
+        
+    - name: 📂 RGTESTING.site
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ftp.rgtesting.site
+        username: be-simkos@simkosapi.rgtesting.site
+        password: pusing081
+
+
