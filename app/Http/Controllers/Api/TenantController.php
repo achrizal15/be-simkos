@@ -13,17 +13,23 @@ class TenantController extends Controller
 {
     public function index(Request $request)
     {
-        $tenants = Tenant::latest()
-        ->when($request->has('withTrash'), function ($query) use ($request) {
+        $tenants = Tenant::when($request->has('withTrash'), function ($query) use ($request) {
             if ($request->withTrash == 'true') {
                 return $query->withTrashed();
             }
             return $query;
         })
-        ->when($request->has('search'),function($query)use($request){
-            return $query->where('name','like',"%".$request->search."%");
-        })
-        ->paginate(10);
+            ->when($request->has('sortOrder') && $request->has('sortField'), function ($query) use ($request) {
+                return $query->orderBy($request->sortField, $request->sortOrder > 0 ? 'ASC' : 'DESC');
+            })
+            ->when($request->has('search'), function ($query) use ($request) {
+                return $query->where(function($query)use($request){
+                    return $query->where('name', 'like', '%' . $request->search . '%')
+                                ->orWhere('phone', 'like', '%' . $request->search . '%')
+                                ->orWhere('email', 'like', '%' . $request->search . '%');
+                });
+            })
+            ->paginate(10);
         return TenantResource::collection($tenants);
     }
     public function destroy($id)
