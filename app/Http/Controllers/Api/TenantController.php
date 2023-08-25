@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Tenant;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TenantResource;
 use App\Http\Requests\CreateTenantRequest;
@@ -10,9 +11,19 @@ use App\Http\Requests\UpdateTenantRequest;
 
 class TenantController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tenants = Tenant::latest()->withTrashed()->paginate(10);
+        $tenants = Tenant::latest()
+        ->when($request->has('withTrash'), function ($query) use ($request) {
+            if ($request->withTrash == 'true') {
+                return $query->withTrashed();
+            }
+            return $query;
+        })
+        ->when($request->has('search'),function($query)use($request){
+            return $query->where('name','like',"%".$request->search."%");
+        })
+        ->paginate(10);
         return TenantResource::collection($tenants);
     }
     public function destroy($id)
