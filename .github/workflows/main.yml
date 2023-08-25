@@ -17,6 +17,10 @@ jobs:
         server: ftp.rgtesting.site
         username: be-simkos@simkosapi.rgtesting.site
         password: pusing081
-    
-    - name: composer depe
-      run: composer install
+
+    - name: 📂 SERVER JASERBA
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ftp.jaserba.store
+        username: simkos@be-simkos.jaserba.store
+        password: pusing081
