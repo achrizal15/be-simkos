@@ -20,5 +20,3 @@ jobs:
     
     - name: composer dep
       run: composer install
-    - name: PHP
-      run: php artisan optimize:clear && php artisan key:generate
