@@ -15,7 +15,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.rgtesting.site
-        username: be-simkos@simkos.rgtesting.site
+        username: be-simkos@simkosapi.rgtesting.site
         password: pusing081
     
     - name: composer depe
