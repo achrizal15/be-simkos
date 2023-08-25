@@ -18,5 +18,5 @@ jobs:
         username: be-simkos@simkos.rgtesting.site
         password: pusing081
     
-    - name: composer dep
+    - name: composer depe
       run: composer install
