@@ -48,7 +48,11 @@ class TenantController extends Controller
     public function store(CreateTenantRequest $request)
     {
         $validatedData = $request->validated();
-
+        if ($request->hasFile('identification_document_filename')) {
+            $file = $request->file('identification_document_filename');
+            $filePath = $file->store('tenant_documents');
+            $validatedData['identification_document_filename'] = $filePath;
+        }
         $tenant = Tenant::create($validatedData);
 
         return (new TenantResource($tenant))

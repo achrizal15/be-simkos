@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,4 +17,8 @@ class Tenant extends Model
         'identification_document_filename', 'emergency_contact_name',
         'emergency_contact_phone'
     ];
+    public function setBirthdateAttribute($value)
+    {
+        $this->attributes['birthdate'] = Carbon::parse($value)->format('Y-m-d'); 
+    }
 }

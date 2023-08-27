@@ -30,17 +30,10 @@ class CreateTenantRequest extends FormRequest
             'workplace' => 'nullable|string',
             'workplace_address' => 'nullable|string',
             'identification_document' => 'nullable|string',
-            'identification_document_filename' => 'nullable|string',
+            'identification_document_filename' => 'nullable|file',
             'emergency_contact_name' => 'nullable|string',
             'emergency_contact_phone' => 'nullable|string',
         ];
     }
-    public function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([
-            'success' => false,
-            'message' => 'Validation errors',
-            'data' => $validator->errors()
-        ]));
-    }
+
 }
