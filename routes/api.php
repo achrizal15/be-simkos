@@ -21,7 +21,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('users',UserController::class);
 
-    Route::apiResource('tenants',TenantController::class);
+    Route::apiResource('tenants',TenantController::class)->except(['update']);
+    Route::post('tenants/{tenant}', [TenantController::class, 'update'])->name('tenants.update');
     Route::put('tenants/{tenant}/restore', [TenantController::class,'restore'])->name('tenants.restore');
 
     Route::post('logout', [AuthController::class, 'logout']);

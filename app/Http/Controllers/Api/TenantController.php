@@ -23,10 +23,10 @@ class TenantController extends Controller
                 return $query->orderBy($request->sortField, $request->sortOrder > 0 ? 'ASC' : 'DESC');
             })
             ->when($request->has('search'), function ($query) use ($request) {
-                return $query->where(function($query)use($request){
+                return $query->where(function ($query) use ($request) {
                     return $query->where('name', 'like', '%' . $request->search . '%')
-                                ->orWhere('phone', 'like', '%' . $request->search . '%')
-                                ->orWhere('email', 'like', '%' . $request->search . '%');
+                        ->orWhere('phone', 'like', '%' . $request->search . '%')
+                        ->orWhere('email', 'like', '%' . $request->search . '%');
                 });
             })
             ->paginate(10);
@@ -50,7 +50,7 @@ class TenantController extends Controller
         $validatedData = $request->validated();
         if ($request->hasFile('identification_document_filename')) {
             $file = $request->file('identification_document_filename');
-            $filePath = $file->store('tenant_documents');
+            $filePath = $file->store('/tenant_documents');
             $validatedData['identification_document_filename'] = $filePath;
         }
         $tenant = Tenant::create($validatedData);
@@ -62,7 +62,12 @@ class TenantController extends Controller
     {
         $tenant = Tenant::findOrFail($id);
         $validatedData = $request->validated();
-
+        unset($validatedData['identification_document_filename']);
+        if ($request->hasFile('identification_document_filename')) {
+            $file = $request->file('identification_document_filename');
+            $filePath = $file->store('/tenant_documents');
+            $validatedData['identification_document_filename'] = $filePath;
+        }
         $tenant->update($validatedData);
 
         return (new TenantResource($tenant))
