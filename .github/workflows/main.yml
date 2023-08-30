@@ -19,7 +19,7 @@ jobs:
         password: pusing081
         
     - name: PHP
-      run: php -v
+      run: php artisan op
 
   server-2:
     name: 🎉 Deploy
