@@ -17,9 +17,6 @@ jobs:
         server: ftp.jaserba.store
         username: simkos@be-simkos.jaserba.store
         password: pusing081
-        
-    - name: PHP
-      run: php artisan
 
   server-2:
     name: 🎉 Deploy
