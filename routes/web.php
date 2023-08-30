@@ -17,13 +17,8 @@ Route::get('/', function () {
     // Artisan::call('storage:link');
     return view('welcome');
 });
-Route::get('/link', function () {        
-    // $target = '/be-simkos/storage/app/public';
-    // $shortcut = '/public_html/simkosapi.rgtesting.site/public/storage';
-    // $shortcut = '/public_html/be-simkos.jaserba.store/public/storage';
-    // symlink($target, $shortcut);
+Route::get('/link', function () {       
     $targetFolder = base_path().'/storage/app/public';
     $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
-    echo $targetFolder;
-    echo $linkFolder;
+    symlink($targetFolder, $linkFolder);
  });
