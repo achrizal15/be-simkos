@@ -19,7 +19,7 @@ jobs:
         password: pusing081
         
     - name: PHP
-      run: php artisan optimize:clear && php artisan storage:link
+      run: php artisan optimize:clear
 
   server-2:
     name: 🎉 Deploy
@@ -35,7 +35,7 @@ jobs:
         username: be-simkos@simkosapi.rgtesting.site
         password: pusing081
 
-    - name: PHP
-      run: php artisan optimize:clear && php artisan storage:link
+    # - name: PHP
+    #   run: php artisan optimize:clear && php artisan storage:link
 
 
