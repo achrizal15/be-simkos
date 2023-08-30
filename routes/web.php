@@ -18,9 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/link', function () {       
+    Artisan::call('optimize:clear');
     $targetFolder = base_path().'/storage/app/public';
     $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
     dump($targetFolder);
     dump($linkFolder);
-    // symlink($targetFolder, $linkFolder);
+    symlink($targetFolder, $linkFolder);
  });
