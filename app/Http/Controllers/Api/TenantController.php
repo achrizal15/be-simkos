@@ -62,16 +62,21 @@ class TenantController extends Controller
     {
         $tenant = Tenant::findOrFail($id);
         $validatedData = $request->validated();
-        unset($validatedData['identification_document_filename']);
-        if ($request->hasFile('identification_document_filename')) {
-            $file = $request->file('identification_document_filename');
-            $filePath = $file->store('/tenant_documents');
-            $validatedData['identification_document_filename'] = $filePath;
+        try {
+            unset($validatedData['identification_document_filename']);
+            if ($request->hasFile('identification_document_filename')) {
+                $file = $request->file('identification_document_filename');
+                $filePath = $file->store('/tenant_documents');
+                $validatedData['identification_document_filename'] = $filePath;
+            }
+            $tenant->update($validatedData);
+    
+            return (new TenantResource($tenant))
+                ->additional(['message' => 'Tenant updated successfully']);
+        } catch (\Throwable $th) {
+            return throw $th;
         }
-        $tenant->update($validatedData);
-
-        return (new TenantResource($tenant))
-            ->additional(['message' => 'Tenant updated successfully']);
+       
     }
     public function restore($id)
     {
