@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/link', function () {       
-    $targetFolder = base_path().'/storage/app/public';
+    $targetFolder = base_path().'/storage/app';
     $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
     symlink($targetFolder, $linkFolder);
  });
