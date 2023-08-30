@@ -23,5 +23,5 @@ Route::get('/link', function () {
     $linkFolder = $_SERVER['DOCUMENT_ROOT'].'/storage';
     dump($targetFolder);
     dump($linkFolder);
-    symlink($targetFolder, $linkFolder);
+    // symlink($targetFolder, $linkFolder);
  });
