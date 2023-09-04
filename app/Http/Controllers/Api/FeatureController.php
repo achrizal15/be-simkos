@@ -17,7 +17,13 @@ class FeatureController extends Controller
                 return $query->withTrashed();
             }
             return $query;
-        })->latest()->paginate(10);
+        })
+        ->when($request->has('search'), function ($query) use ($request) {
+            return $query->where(function ($query) use ($request) {
+                return $query->where('name', 'like', '%' . $request->search . '%');
+            });
+        })
+        ->latest()->paginate(27);
         return FeatureResource::collection($features);
     }
     public function destroy($id)

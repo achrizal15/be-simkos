@@ -19,11 +19,15 @@ class FeatureSeeder extends Seeder
                 'icon' => 'pi pi-shield'
             ],
             [
-                'name' => 'Super Market',
-                'icon' => 'pi pi-shopping-bags'
+                'name' => 'Dapur',
+                'icon' => 'pi pi-shopping-bag'
             ],
             [
-                'name' => 'Parkir Mobil',
+                'name' => 'AC',
+                'icon' => 'pi pi-server'
+            ],
+            [
+                'name' => 'Tempat Parkir',
                 'icon' => 'pi pi-car'
             ],
             [
