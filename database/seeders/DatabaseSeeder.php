@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'su@simkos.com',
         ]);
         $this->call([
-            TenantSeeder::class
+            TenantSeeder::class,
+            FeatureSeeder::class
         ]);
     }
 }

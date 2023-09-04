@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\FeatureController;
 use App\Http\Controllers\Api\TenantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::apiResource('tenants',TenantController::class)->except(['update']);
     Route::post('tenants/{tenant}', [TenantController::class, 'update'])->name('tenants.update');
     Route::put('tenants/{tenant}/restore', [TenantController::class,'restore'])->name('tenants.restore');
+
+    Route::apiResource('features',FeatureController::class)->except(['update']);
+    Route::post('features/{tenant}', [FeatureController::class, 'update'])->name('features.update');
+    Route::put('features/{tenant}/restore', [FeatureController::class,'restore'])->name('features.restore');
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
