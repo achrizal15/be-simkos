@@ -16,39 +16,39 @@ class FeatureSeeder extends Seeder
         $features = [
             [
                 'name' => 'Security & CCTV',
-                'icon' => 'pi pi-shield'
+                'icon' => 'pi-shield'
             ],
             [
                 'name' => 'Dapur',
-                'icon' => 'pi pi-shopping-bag'
+                'icon' => 'pi-shopping-bag'
             ],
             [
                 'name' => 'AC',
-                'icon' => 'pi pi-server'
+                'icon' => 'pi-server'
             ],
             [
                 'name' => 'Tempat Parkir',
-                'icon' => 'pi pi-car'
+                'icon' => 'pi-car'
             ],
             [
                 'name' => 'Free Wifi',
-                'icon' => 'pi pi-wifi'
+                'icon' => 'pi-wifi'
             ],
             [
                 'name' => 'TV',
-                'icon' => 'pi pi-desktop'
+                'icon' => 'pi-desktop'
             ],
             [
                 'name' => 'Dua Orang',
-                'icon' => 'pi pi-users'
+                'icon' => 'pi-users'
             ],
             [
                 'name' => 'Single/1 Orang',
-                'icon' => 'pi pi-user'
+                'icon' => 'pi-user'
             ],
             [
                 'name' => 'Kamar Mandi Dalam',
-                'icon' => 'pi pi-filter'
+                'icon' => 'pi-filter'
             ],
 
             // Add more features with their respective "pi" icons as needed
