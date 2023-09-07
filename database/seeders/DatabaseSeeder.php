@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             TenantSeeder::class,
             FeatureSeeder::class
         ]);
-        Room::factory(10)->create()->each(function ($room) {
+        Room::factory(20)->create()->each(function ($room) {
             $features = Feature::inRandomOrder()->limit(rand(1, 3))->get();
             $room->features()->attach($features);
         });

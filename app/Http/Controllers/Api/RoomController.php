@@ -34,7 +34,7 @@ class RoomController extends Controller
                 });
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(12);
         return RoomResource::collection($rooms);
     }
 
