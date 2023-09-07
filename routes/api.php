@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\FeatureController;
-use App\Http\Controllers\Api\TenantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RoomController;
+use App\Http\Controllers\Api\TenantController;
+use App\Http\Controllers\Api\FeatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,12 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put('tenants/{tenant}/restore', [TenantController::class,'restore'])->name('tenants.restore');
 
     Route::apiResource('features',FeatureController::class)->except(['update']);
-    Route::post('features/{tenant}', [FeatureController::class, 'update'])->name('features.update');
-    Route::put('features/{tenant}/restore', [FeatureController::class,'restore'])->name('features.restore');
+    Route::post('features/{feature}', [FeatureController::class, 'update'])->name('features.update');
+    Route::put('features/{feature}/restore', [FeatureController::class,'restore'])->name('features.restore');
+
+    Route::apiResource('rooms',RoomController::class)->except(['update']);
+    Route::post('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
+    Route::put('rooms/{room}/restore', [RoomController::class,'restore'])->name('rooms.restore');
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

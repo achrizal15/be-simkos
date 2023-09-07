@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Feature;
+use App\Models\Room;
 use App\Traits\GeneratesUsername;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
         \App\Models\User::factory()->create([
             'name' => 'Rachel Velicia',
             'username' => $this->generateUsername('Rachel Velicia'),
@@ -25,5 +25,10 @@ class DatabaseSeeder extends Seeder
             TenantSeeder::class,
             FeatureSeeder::class
         ]);
+        Room::factory(10)->create()->each(function ($room) {
+            $features = Feature::inRandomOrder()->limit(rand(1, 3))->get();
+            $room->features()->attach($features);
+        });
+        
     }
 }
