@@ -23,7 +23,7 @@ class FeatureController extends Controller
                 return $query->where('name', 'like', '%' . $request->search . '%');
             });
         })
-        ->latest()->paginate(27);
+        ->latest()->paginate(9999);
         return FeatureResource::collection($features);
     }
     public function destroy($id)
