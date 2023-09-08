@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('yearly_price', 10, 2)->default(0)->nullable();
             $table->string('image_path')->nullable();
             $table->string('simple_description')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

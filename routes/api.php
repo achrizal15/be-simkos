@@ -20,20 +20,21 @@ use App\Http\Controllers\Api\FeatureController;
 */
 Route::post('login', [AuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function(){
-    Route::apiResource('users',UserController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('users', UserController::class);
 
-    Route::apiResource('tenants',TenantController::class)->except(['update']);
+    Route::apiResource('tenants', TenantController::class)->except(['update']);
     Route::post('tenants/{tenant}', [TenantController::class, 'update'])->name('tenants.update');
-    Route::put('tenants/{tenant}/restore', [TenantController::class,'restore'])->name('tenants.restore');
+    Route::put('tenants/{tenant}/restore', [TenantController::class, 'restore'])->name('tenants.restore');
 
-    Route::apiResource('features',FeatureController::class)->except(['update']);
+    Route::apiResource('features', FeatureController::class)->except(['update']);
     Route::post('features/{feature}', [FeatureController::class, 'update'])->name('features.update');
-    Route::put('features/{feature}/restore', [FeatureController::class,'restore'])->name('features.restore');
+    Route::put('features/{feature}/restore', [FeatureController::class, 'restore'])->name('features.restore');
 
-    Route::apiResource('rooms',RoomController::class)->except(['update']);
+    Route::apiResource('rooms', RoomController::class)->except(['update']);
     Route::post('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
-    Route::put('rooms/{room}/restore', [RoomController::class,'restore'])->name('rooms.restore');
+    Route::put('rooms/{room}/restore', [RoomController::class, 'restore'])->name('rooms.restore');
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
+include __DIR__ . '/apiFrontEnd.php';
