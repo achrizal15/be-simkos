@@ -19,7 +19,9 @@ class RoomFactory extends Factory
         return [
             'name' => $this->faker->unique()->word,
             'type' => $this->faker->randomElement(['Suite', 'Standard', 'Deluxe']),
-            'price' => $this->faker->numberBetween(50, 500),
+            'daily_price' => $this->faker->numberBetween(50000, 100000),
+            'monthly_price' => $this->faker->numberBetween(150000, 500000),
+            'yearly_price' => $this->faker->numberBetween(1000000, 5000000),
             'image_path' => $this->faker->imageUrl(),
             'simple_description' => $this->faker->sentence,
             'description' => $this->faker->paragraph,

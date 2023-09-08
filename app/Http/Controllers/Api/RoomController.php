@@ -40,7 +40,7 @@ class RoomController extends Controller
 
     public function show($id)
     {
-        $room = Room::find($id);
+        $room = Room::with('features')->find($id);
         if (!$room) {
             return response()->json(['message' => 'Room not found'], 404);
         }
@@ -68,7 +68,7 @@ class RoomController extends Controller
         if (isset($validatedData['features_id'])) {
             $room->features()->sync($validatedData['features_id']);
         }
-        return new RoomResource($room);
+        return new RoomResource($room->load('features'));
     }
     public function update(UpdateRoomRequest $request, $id)
     {
@@ -89,7 +89,7 @@ class RoomController extends Controller
         if (isset($validatedData['features_id'])) {
             $room->features()->sync($validatedData['features_id']);
         }
-        return new RoomResource($room);
+        return new RoomResource($room->load('features'));
     }
     public function restore($id)
     {

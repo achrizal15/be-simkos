@@ -16,7 +16,9 @@ class UpdateRoomRequest extends FormRequest
         return [
             'name' => 'sometimes|required|string|max:255',
             'type' => 'sometimes|required|string|max:255',
-            'price' => 'sometimes|required|numeric',
+            'yearly_price' => 'required|numeric',
+            'daily_price' => 'required|numeric',
+            'monthly_price' => 'required|numeric',
             'image_path' => 'required_if:image_path_old,null',
             'simple_description' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',

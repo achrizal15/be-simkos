@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->decimal('price', 10, 2);
+            $table->decimal('daily_price', 10, 2)->default(0)->nullable();
+            $table->decimal('monthly_price', 10, 2)->default(0)->nullable();
+            $table->decimal('yearly_price', 10, 2)->default(0)->nullable();
             $table->string('image_path')->nullable();
             $table->string('simple_description')->nullable();
             $table->text('description')->nullable();

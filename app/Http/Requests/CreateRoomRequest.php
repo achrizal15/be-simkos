@@ -16,8 +16,10 @@ class CreateRoomRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'type' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'image_path' =>  'required|string',
+            'yearly_price' => 'required|numeric',
+            'daily_price' => 'required|numeric',
+            'monthly_price' => 'required|numeric',
+            'image_path' => 'required|file',
             'simple_description' => 'required|string|max:255',
             'description' => 'required|string',
             'features_id' => 'sometimes|array|exists:features,id',
